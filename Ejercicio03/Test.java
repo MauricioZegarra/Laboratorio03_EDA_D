@@ -6,7 +6,11 @@ public class Test {
         System.out.println(queue);
         queue.offer(7);
         System.out.println(queue);
+        queue.add(11);
         queue.poll();
-        System.out.println(queue);
+        System.out.println("El primer elemento es: " + queue.element() + " => " + queue);
+        queue.offer(9);
+        queue.remove();
+        System.out.println("El primer elemento es: " + queue.peek() + " => " + queue);
     }
 }

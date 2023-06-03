@@ -88,12 +88,27 @@ public class Cola <T>{
     }
 
     public Node<T> poll() {
-        return root;
-    }
-
-    public Node<T> remove() {
         if (isEmpty()) {
             System.out.println("La cola esta vacia!");
+            return null;
+        }
+        else {
+            if (this.n == 1) {
+                this.root = null;
+            }
+            else {
+                this.root = this.root.getNextNode();
+            }
+
+            this.n--;
+
+            return root;
+        }
+    }
+
+    public Node<T> remove() throws IllegalStateException {
+        if (isEmpty()) {
+            throw new IllegalStateException("La cola esta vacia!");
         }
         else {
             if (this.n == 1) {
