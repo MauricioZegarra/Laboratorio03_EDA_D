@@ -29,8 +29,19 @@ public class Stack<E> {
 		return this.root == null;
 	}
 
-    public int search(Object o){
-        return 0;
+    public int search(Object o){ //Tipo Object para poder utilizar equals
+        Node<E> current = this.root;
+    	int index = 0;
+
+		while (current != null) {
+			if (current.getData().equals(o)) {
+				return index;
+			}
+			current = current.getNext();
+			index++;
+		}
+
+    	return -1;
     }
 	
 	public String toString() {

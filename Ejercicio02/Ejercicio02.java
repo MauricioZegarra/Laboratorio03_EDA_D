@@ -22,6 +22,8 @@ public class Ejercicio02 {
             
             pila.push("Diego");
             System.out.println(pila + "\tpeek: " + pila.peek());
+
+			System.out.println(pila.search("AndreCapi"));
                 
             
         }catch(Exception e) {
