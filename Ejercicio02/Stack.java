@@ -45,9 +45,18 @@ public class Stack<E> {
     }
 	
 	public String toString() {
+		/* 
 		String str = "";
 		for (Node<E> i = this.root; i != null; i = i.getNext())
 			str += i.toString() + ", ";
+		return str;*/
+
+		String str = "";
+		Node<E> nodo = this.root;
+		while (nodo != null) {
+			str = nodo.toString() + ", " + str;
+			nodo = nodo.getNext();
+		}
 		return str;
 	}
 }
