@@ -6,7 +6,7 @@ public class Test {
         System.out.println(queue);
         queue.offer(7);
         System.out.println(queue);
-        queue.remove();
+        queue.poll();
         System.out.println(queue);
     }
 }

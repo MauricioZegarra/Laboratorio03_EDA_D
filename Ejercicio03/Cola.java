@@ -28,28 +28,9 @@ public class Cola <T>{
         return this.n == this.capacidad;
     }
 
-    public void remove() {
-        if (isEmpty()) {
-            System.out.println("La cola esta vacia!");
-        }
-        else {
-            if (this.n == 1) {
-                this.root = null;
-            }
-            else {
-                this.root = this.root.getNextNode();
-            }
-
-            this.n--;
-        }
-    }
-
     public boolean add(T data) throws IllegalStateException {
 
-        boolean confirmation;
-
         if (isFull()) {
-            confirmation = false;
             throw new IllegalStateException("Cola llena!");
         }
         else {
@@ -64,15 +45,15 @@ public class Cola <T>{
     
             this.n++;
     
-            confirmation = true;    
+            return true;    
         }
 
-        return confirmation;
     }
 
-    public void offer(T data){
+    public boolean offer(T data){
         if (isFull()) {
             System.out.println("Cola llena!");
+            return false;
         }
         else {
             if (isEmpty()) {
@@ -85,7 +66,47 @@ public class Cola <T>{
             }
     
             this.n++;
+            
+            return true;
         }
+    }
+
+    public Node<T> element() throws IllegalStateException {
+        if (isEmpty()) {
+            throw new IllegalStateException("La cola esta vacia!"); 
+        }
+        return root;
+    }
+
+    public Node<T> peek() {
+        if (isEmpty()) {
+            return null;
+        }
+        else {
+            return root;
+        }
+    }
+
+    public Node<T> poll() {
+        return root;
+    }
+
+    public Node<T> remove() {
+        if (isEmpty()) {
+            System.out.println("La cola esta vacia!");
+        }
+        else {
+            if (this.n == 1) {
+                this.root = null;
+            }
+            else {
+                this.root = this.root.getNextNode();
+            }
+
+            this.n--;
+        }
+
+        return root;
     }
 
     public String toString() {
