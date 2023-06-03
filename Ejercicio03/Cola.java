@@ -1,43 +1,35 @@
 public class Cola <T>{
-    private Object[] cola;
-    private int frente;
-    private int fin;
+    private Node<T> root;
+    private int n;
 
-    public Cola (int tamaño){
-        cola= new Object[tamaño];
-        frente=fin=-1;
+    public Cola (T data){
+        this.root = new Node<T>(data);
+        this.n = 0;
+    }
+
+    public Cola(Node<T> root) {
+        this.root = root;
+        this.n = 0;
     }
 
     public boolean isEmpty(){
-        return frente==fin;
+        return n == 0;
     }
-    public boolean isFull(){
-        return fin==cola.length-1;
+
+    public void insert(T data){
+        Node<T> aux = this.root;
+        for (; aux.getNextNode() != null; aux = aux.getNextNode());
+        aux.setNextNode(new Node<T>(data));
+        n++;
     }
-    public void insert(Object elemento){
-        if(isFull())
-            System.out.println("La cola esta llena, elimine datos antes de insertar!");
-        else
-            cola[++fin]=elemento;
-    }
-    public Object remove(){
-        if(isEmpty()){
-            System.out.println("La cola esta vacia, inserte datos!");
-            return "Cola vacia";
+
+    public String toString() {
+        String str = "";
+
+        for (Node<T> aux = this.root; aux != null; aux = aux.getNextNode()) {
+            str += aux + ", ";
         }
-        else
-            return cola[++frente];
-    }
-    public void verCola(){
-        if(isEmpty())
-            System.out.println("La cola esta vacia");
-        else if(frente==-1){
-            for(int i=0;i<=fin;i++)
-                System.out.println(cola[i]);
-        }
-        else{
-            for(int j=frente;j<=fin;j++)
-                System.out.println(cola[j]); 
-        }
+
+        return str;
     }
 }

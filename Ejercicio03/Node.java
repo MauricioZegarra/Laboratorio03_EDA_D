@@ -27,4 +27,8 @@ public class Node <T> {
     public T getData() {
         return data;
     }
+
+    public String toString() {
+        return getData().toString();
+    }
 }
