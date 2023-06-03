@@ -6,5 +6,7 @@ public class Test {
         System.out.println(queue);
         queue.insert(7);
         System.out.println(queue);
+        queue.remove();
+        System.out.println(queue);
     }
 }

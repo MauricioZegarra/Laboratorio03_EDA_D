@@ -1,1 +1,2 @@
+#esto evitará que se pusheen los compiladores de java y no exista confusión al notar dos archivos con el mismo nombre pero diferente terminacion
 *.class
