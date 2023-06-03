@@ -1,23 +1,31 @@
 public class Cola <T>{
     private Node<T> root;
-    private int n;
+    private int n = 0;
+    private int capacidad;
     
-    public Cola() {
+    public Cola(int capacidad) {
+        this.capacidad = capacidad;
         this.n = 0;
     }
 
-    public Cola (T data){
+    public Cola (T data, int capacidad){
         this.root = new Node<T>(data);
-        this.n = 1;
+        this.capacidad = capacidad;
+        this.n++;
     }
 
-    public Cola(Node<T> root) {
+    public Cola(Node<T> root, int capacidad) {
         this.root = root;
-        this.n = 1;
+        this.capacidad = capacidad;
+        this.n++;
     }
 
     public boolean isEmpty(){
         return this.n == 0;
+    }
+
+    public boolean isFull() {
+        return this.n == this.capacidad;
     }
 
     public void remove() {
@@ -36,17 +44,48 @@ public class Cola <T>{
         }
     }
 
-    public void insert(T data){
-        if (isEmpty()) {
-            this.root = new Node<T>(data);
+    public boolean add(T data) throws IllegalStateException {
+
+        boolean confirmation;
+
+        if (isFull()) {
+            confirmation = false;
+            throw new IllegalStateException("Cola llena!");
         }
         else {
-            Node<T> aux = this.root;
-            for (; aux.getNextNode() != null; aux = aux.getNextNode());
-            aux.setNextNode(new Node<T>(data));
+            if (isEmpty()) {
+                this.root = new Node<T>(data);
+            }
+            else {
+                Node<T> aux = this.root;
+                for (; aux.getNextNode() != null; aux = aux.getNextNode());
+                aux.setNextNode(new Node<T>(data));
+            }
+    
+            this.n++;
+    
+            confirmation = true;    
         }
 
-        this.n++;
+        return confirmation;
+    }
+
+    public void offer(T data){
+        if (isFull()) {
+            System.out.println("Cola llena!");
+        }
+        else {
+            if (isEmpty()) {
+                this.root = new Node<T>(data);
+            }
+            else {
+                Node<T> aux = this.root;
+                for (; aux.getNextNode() != null; aux = aux.getNextNode());
+                aux.setNextNode(new Node<T>(data));
+            }
+    
+            this.n++;
+        }
     }
 
     public String toString() {

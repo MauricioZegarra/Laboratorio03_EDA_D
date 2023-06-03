@@ -1,10 +1,10 @@
 public class Test {
-    public static void main(String[] args) {
-        Cola<Integer> queue = new Cola<Integer>(4);
+    public static void main(String[] args) throws IllegalStateException {
+        Cola<Integer> queue = new Cola<Integer>(4, 10);
         System.out.println(queue);
-        queue.insert(5);
+        queue.add(5);
         System.out.println(queue);
-        queue.insert(7);
+        queue.offer(7);
         System.out.println(queue);
         queue.remove();
         System.out.println(queue);
