@@ -1,3 +1,5 @@
+import java.util.EmptyStackException;
+
 public class Stack<E> {
 	private Node<E> root;
 	
@@ -10,11 +12,17 @@ public class Stack<E> {
 	}
 	
 	public E pop() {
-		return null;
+		if (isEmpty())
+            throw new EmptyStackException();
+        E aux = this.root.getData();
+        this.root = this.root.getNext();
+        return aux;
 	}
 	
 	public E peek() {
-		return null;
+		if (isEmpty())
+            throw new EmptyStackException();
+        return this.root.getData();
 	}
 	
 	public boolean isEmpty() {
@@ -22,7 +30,7 @@ public class Stack<E> {
 	}
 
     public int search(Object o){
-        return null;
+        return 0;
     }
 	
 	public String toString() {
